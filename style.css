@@ -1,0 +1,16 @@
+/*
+Theme Name: Basic WP Theme
+Theme URI: https://example.com
+Author: ChatGPT
+Author URI: https://example.com
+Description: Базова тема WordPress для старту розробки.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: basic-wp-theme
+*/
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
