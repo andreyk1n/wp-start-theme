@@ -10,3 +10,6 @@ function basic_wp_theme_assets() {
     wp_enqueue_style('basic-style', get_stylesheet_uri());
 }
 add_action('wp_enqueue_scripts', 'basic_wp_theme_assets');
+
+// ACF Options Page (contacts)
+// require_once get_template_directory() . '/inc/acf/option-page.php';
