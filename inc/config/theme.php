@@ -1,2 +1,0 @@
-<?php
-// Theme config

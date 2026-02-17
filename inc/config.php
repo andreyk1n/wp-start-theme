@@ -176,3 +176,6 @@ define('THEME_DISABLE_FILE_EDIT', true);
 
 // Глобальне вимкнення коментарів
 define('THEME_DISABLE_COMMENTS', false);
+
+// Підключення пост-тайпу
+define('THEME_CPT_PROJECT', false);

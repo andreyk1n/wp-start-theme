@@ -46,3 +46,8 @@ add_action('wp_enqueue_scripts', function () {
 if (defined('THEME_ACF_OPTIONS') && THEME_ACF_OPTIONS) {
     require_once THEME_INC_PATH . '/acf/option-page.php';
 }
+
+// Пост-тайпи
+if (defined('THEME_CPT_PROJECT') && THEME_CPT_PROJECT) {
+    require_once THEME_INC_PATH . '/post-types/project.php';
+}
