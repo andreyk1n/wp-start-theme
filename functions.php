@@ -51,3 +51,6 @@ if (defined('THEME_ACF_OPTIONS') && THEME_ACF_OPTIONS) {
 if (defined('THEME_CPT_PROJECT') && THEME_CPT_PROJECT) {
     require_once THEME_INC_PATH . '/post-types/project.php';
 }
+
+// Підключення універсального компоненту циклу
+// require_once THEME_INC_PATH . '/components/loop.php';
