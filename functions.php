@@ -3,6 +3,10 @@
 // Підключаємо конфіг першим
 require_once get_template_directory() . '/inc/config.php';
 
+// Стилізація логіну
+require_once THEME_INC_PATH . '/admin/login.php';
+
+
 // Theme setup
 
 add_action('after_setup_theme', function () {
