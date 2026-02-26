@@ -1,10 +1,9 @@
 <?php get_header(); ?>
 
-<?php while (have_posts()) : the_post(); ?>
-    <article>
-        <h1><?php the_title(); ?></h1>
-        <?php the_content(); ?>
-    </article>
-<?php endwhile; ?>
+<?php
+//  IF ACF HAS FLEXIBLE CONTENT 
+//  theme_render_flexible();
+// IF ACF HAS FLEXIBLE CONTENT 
+?>
 
 <?php get_footer(); ?>

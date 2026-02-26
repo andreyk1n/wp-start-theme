@@ -54,3 +54,8 @@ if (defined('THEME_CPT_PROJECT') && THEME_CPT_PROJECT) {
 
 // Підключення універсального компоненту циклу
 // require_once THEME_INC_PATH . '/components/loop.php';
+
+// Підключення helpers
+// foreach (glob(THEME_INC_PATH . '/helpers/*.php') as $file) {
+//     require_once $file;
+// }
