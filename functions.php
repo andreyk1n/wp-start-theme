@@ -59,3 +59,14 @@ if (defined('THEME_CPT_PROJECT') && THEME_CPT_PROJECT) {
 // foreach (glob(THEME_INC_PATH . '/helpers/*.php') as $file) {
 //     require_once $file;
 // }
+
+
+// Header menu
+
+add_action('after_setup_theme', function () {
+    register_nav_menus([
+        'header_menu' => __('Header Menu', 'your-theme'),
+    ]);
+});
+
+// Header menu
