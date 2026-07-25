@@ -21,7 +21,7 @@ $image = get_sub_field('image');
             <?php endif; ?>
             <?php if ($text): ?>
                 <div class="hero__text">
-                    <?php echo esc_html($text); ?>
+                    <?php echo $text; ?>
                 </div>
             <?php endif; ?>
             <?php if ($buttons): ?>
@@ -42,8 +42,12 @@ $image = get_sub_field('image');
         </div>
         <div class="hero__media">
             <?php if (!empty($image)): ?>
-                <img class="hero__image" src="<?php echo $image; ?>"
-                    alt="<?php the_title(); ?>">
+                <img class="hero__image" src="<?php echo esc_url($image); ?>"
+                    alt="<?php echo esc_attr(get_the_title()); ?>" draggable="false">
+            <?php else: ?>
+                <img class="hero__image"
+                    src="<?php echo esc_url('https://placehold.co/800x600?text=' . rawurlencode($title)); ?>"
+                    alt="<?php echo esc_attr($title); ?>" draggable="false">
             <?php endif; ?>
         </div>
     </div>
