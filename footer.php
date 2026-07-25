@@ -1,14 +1,24 @@
 </main>
-<footer>
-    <?php
-    wp_nav_menu([
-        'theme_location' => 'footer_menu',
-        'container' => false,
-        'menu_class' => 'footer__menu',
-        'fallback_cb' => false,
-    ]);
-    ?>
-    <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
+<footer class="footer">
+    <div class="footer__container">
+        <a href="<?php echo home_url('/'); ?>" class="footer__logo">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/footer/logo.svg" alt="Footer logo">
+        </a>
+        <div class="footer__menu">
+            <?php
+            wp_nav_menu([
+                'theme_location' => 'footer_menu',
+                'container' => false,
+                'menu_class' => 'footer__menu',
+                'fallback_cb' => false,
+            ]);
+            ?>
+        </div>
+        <p>&copy;
+            <?php echo date('Y'); ?>
+            <?php bloginfo('name'); ?>
+        </p>
+    </div>
 </footer>
 
 <script>
