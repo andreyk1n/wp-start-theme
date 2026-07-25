@@ -20,9 +20,9 @@ $image = get_sub_field('image');
                 </h1>
             <?php endif; ?>
             <?php if ($text): ?>
-                <p class="hero__text">
+                <div class="hero__text">
                     <?php echo esc_html($text); ?>
-                </p>
+                </div>
             <?php endif; ?>
             <?php if ($buttons): ?>
                 <div class="hero__actions">
@@ -42,8 +42,8 @@ $image = get_sub_field('image');
         </div>
         <div class="hero__media">
             <?php if (!empty($image)): ?>
-                <img class="hero__image" src="<?php echo esc_url($image['url']); ?>"
-                    alt="<?php echo esc_attr($image['alt'] ?: $title); ?>">
+                <img class="hero__image" src="<?php echo $image; ?>"
+                    alt="<?php the_title(); ?>">
             <?php endif; ?>
         </div>
     </div>
