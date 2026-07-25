@@ -6,4 +6,7 @@
 // IF ACF HAS FLEXIBLE CONTENT 
 ?>
 
+
+<?php get_template_part( 'inc/acf/fields/flexible' ); ?>
+
 <?php get_footer(); ?>
