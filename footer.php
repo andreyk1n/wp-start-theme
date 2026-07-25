@@ -1,5 +1,13 @@
 </main>
 <footer>
+    <?php
+    wp_nav_menu([
+        'theme_location' => 'footer_menu',
+        'container' => false,
+        'menu_class' => 'footer__menu',
+        'fallback_cb' => false,
+    ]);
+    ?>
     <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
 </footer>
 

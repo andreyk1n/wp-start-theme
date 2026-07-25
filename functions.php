@@ -61,12 +61,13 @@ if (defined('THEME_CPT_PROJECT') && THEME_CPT_PROJECT) {
 // }
 
 
-// Header menu
+// Register header and footer menu
 
 add_action('after_setup_theme', function () {
     register_nav_menus([
         'header_menu' => __('Header Menu', 'your-theme'),
+        'footer_menu' => __('Footer Menu', 'your-theme'),
     ]);
 });
 
-// Header menu
+// Register header and footer menu
