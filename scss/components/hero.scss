@@ -45,6 +45,9 @@
 
     &__actions {
         margin-top: 42px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
     }
 
     &__button {
