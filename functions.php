@@ -9,6 +9,9 @@ require_once THEME_INC_PATH . '/helpers/local-url-fix.php';
 // Стилізація логіну
 require_once THEME_INC_PATH . '/admin/login.php';
 
+// SEO module
+require_once THEME_INC_PATH . '/seo/seo.php';
+
 // Theme setup
 
 add_action('after_setup_theme', function () {
