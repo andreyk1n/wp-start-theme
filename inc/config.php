@@ -7,7 +7,10 @@
 */
 
 // Назва теми (для внутрішнього використання, логів, тощо)
-define('THEME_NAME', 'Start Theme');
+define('THEME_NAME', 'stater-theme');
+
+// Автоматичне виправлення внутрішніх посилань на локальному сервері.
+define('THEME_LOCAL_URL_FIX', true);
 
 // Короткий slug теми (можна використовувати в хендлах стилів, класах, id)
 define('THEME_SLUG', 'start');
