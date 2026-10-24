@@ -78,3 +78,7 @@ require_once THEME_INC_PATH . '/helpers/svg.php';
 // Admin dark mode
 // require_once THEME_INC_PATH . '/admin/ui.php';
 // Admin dark mode
+
+// enable schema generator
+require_once THEME_INC_PATH . '/seo/schema.php';
+// enable schema generator
