@@ -74,3 +74,7 @@ require_once THEME_INC_PATH . '/setup/menus.php';
 // Allow SVG uploads
 require_once THEME_INC_PATH . '/helpers/svg.php';
 // Allow SVG uploads
+
+// Admin dark mode
+// require_once THEME_INC_PATH . '/admin/ui.php';
+// Admin dark mode

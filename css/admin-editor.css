@@ -1,0 +1,197 @@
+
+/* =====================================================
+   Gutenberg — Dark Admin Interface
+   ===================================================== */
+
+body.block-editor-page,
+body.site-editor-php {
+    color-scheme: dark;
+    background: #111318;
+    color: #e8eaf0;
+}
+
+.interface-interface-skeleton,
+.interface-interface-skeleton__body,
+.interface-interface-skeleton__content,
+.interface-navigable-region,
+.edit-post-layout,
+.edit-post-header,
+.edit-post-sidebar,
+.editor-header,
+.editor-styles-wrapper {
+    background-color: #111318;
+    color: #e8eaf0;
+}
+
+.interface-interface-skeleton__header,
+.interface-interface-skeleton__footer,
+.edit-post-header,
+.editor-header,
+.interface-complementary-area,
+.interface-complementary-area__fill {
+    background: #191c24;
+    border-color: #2c303b;
+}
+
+.interface-complementary-area,
+.interface-complementary-area__fill {
+    color: #e8eaf0;
+}
+
+.interface-complementary-area h2,
+.interface-complementary-area h3,
+.interface-complementary-area h4 {
+    color: #e8eaf0;
+}
+
+.components-panel,
+.components-panel__header,
+.components-panel__body,
+.components-panel__body-toggle,
+.components-base-control__field {
+    color: #e8eaf0;
+}
+
+.components-panel,
+.components-panel__header,
+.components-panel__body {
+    border-color: #2c303b;
+}
+
+.components-panel__body-toggle {
+    background: #191c24;
+}
+
+.components-panel__body-toggle:hover {
+    background: #222631;
+}
+
+.components-button {
+    transition:
+        background-color 160ms ease,
+        color 160ms ease;
+}
+
+.components-button:not(.is-primary):not(.is-destructive) {
+    color: #d6d9e3;
+}
+
+.components-button:not(.is-primary):not(.is-destructive):hover {
+    background: #292d39;
+    color: #fff;
+}
+
+.components-button.is-primary {
+    background: #8b7cf6;
+    color: #fff;
+}
+
+.components-button.is-primary:hover {
+    background: #a195ff;
+    color: #111318;
+}
+
+.components-text-control__input,
+.components-textarea-control__input,
+.components-select-control__input,
+.components-input-control__container,
+.components-combobox-control__input,
+.components-form-token-field__input {
+    background: #13161d;
+    color: #e8eaf0;
+    border-color: #383d4b;
+}
+
+.components-text-control__input:focus,
+.components-textarea-control__input:focus,
+.components-select-control__input:focus {
+    border-color: #8b7cf6;
+    box-shadow: 0 0 0 1px #8b7cf6;
+}
+
+.components-popover__content,
+.components-menu-group,
+.components-dropdown-menu__menu,
+.components-dropdown-menu__menu-item,
+.components-navigate-regions,
+.components-modal__frame {
+    background: #191c24;
+    color: #e8eaf0;
+    border-color: #2c303b;
+}
+
+.components-menu-item__button,
+.components-menu-item__item {
+    color: #e8eaf0;
+}
+
+.components-menu-item__button:hover,
+.components-menu-item__button:focus {
+    background: #292d39;
+    color: #fff;
+}
+
+.components-notice {
+    background: #191c24;
+    color: #e8eaf0;
+}
+
+.components-tab-panel__tabs {
+    border-color: #2c303b;
+}
+
+.components-tab-panel__tabs-item {
+    color: #9299aa;
+}
+
+.components-tab-panel__tabs-item.is-active {
+    color: #c5bdff;
+    box-shadow: inset 0 -2px #8b7cf6;
+}
+
+.editor-post-title__input {
+    color: #e8eaf0;
+}
+
+.block-editor-block-list__block
+    .block-editor-block-list__block-edit {
+    border-radius: 4px;
+}
+
+.block-editor-block-list__block.is-selected
+    > .block-editor-block-list__block-edit {
+    outline-color: #8b7cf6;
+}
+
+.block-editor-inserter__panel,
+.block-editor-inserter__main-area,
+.block-editor-inserter__menu {
+    background: #191c24;
+    color: #e8eaf0;
+}
+
+.block-editor-inserter__tabs {
+    border-color: #2c303b;
+}
+
+.block-editor-inserter__panel-content {
+    color: #e8eaf0;
+}
+
+.edit-site-layout,
+.edit-site-layout__content {
+    background: #111318;
+}
+
+.edit-site-sidebar-navigation,
+.edit-site-sidebar-navigation-screen {
+    background: #191c24;
+    color: #e8eaf0;
+}
+
+/* Preserve the content canvas iframes and
+   the actual website preview from forced dark styling. */
+.editor-styles-wrapper {
+    background-color: #fff;
+    color: #1e1e1e;
+}
