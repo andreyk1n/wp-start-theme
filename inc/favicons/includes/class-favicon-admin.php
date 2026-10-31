@@ -2,11 +2,13 @@
 
 defined('ABSPATH') || exit;
 
-class Theme_Favicon_Admin {
+class Theme_Favicon_Admin
+{
 
     private Theme_Favicon_Generator $generator;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         $this->generator = new Theme_Favicon_Generator();
 
@@ -16,12 +18,18 @@ class Theme_Favicon_Admin {
             'admin_post_theme_favicon_upload',
             [$this, 'handle_upload']
         );
+
+        add_action(
+            'admin_post_theme_favicon_delete',
+            [$this, 'handle_delete']
+        );
     }
 
     /**
      * Register admin page.
      */
-    public function register_page() {
+    public function register_page()
+    {
 
         add_theme_page(
             'Favicon Generator',
@@ -35,7 +43,8 @@ class Theme_Favicon_Admin {
     /**
      * Render admin page.
      */
-    public function render_page() {
+    public function render_page()
+    {
 
         ?>
         <div class="wrap">
@@ -56,43 +65,74 @@ class Theme_Favicon_Admin {
 
             <h2>Завантажити фавіконку</h2>
 
-            <form
-                method="post"
-                action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
-                enctype="multipart/form-data"
-            >
+            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" enctype="multipart/form-data">
 
-                <input
-                    type="hidden"
-                    name="action"
-                    value="theme_favicon_upload"
-                >
+                <input type="hidden" name="action" value="theme_favicon_upload">
 
                 <?php wp_nonce_field('theme_favicon_upload', 'favicon_nonce'); ?>
 
-                <input
-                    type="file"
-                    name="favicon"
-                    accept="image/png,image/jpeg,image/webp"
-                    required
-                >
+                <input type="file" name="favicon" accept="image/png,image/jpeg,image/webp" required>
 
                 <?php submit_button('Завантажити та згенерувати'); ?>
 
             </form>
 
-            <?php if (isset($_GET['favicon_status'])) : ?>
+            <?php
 
-                <?php if ($_GET['favicon_status'] === 'success') : ?>
+            $favicon_exists = file_exists(
+                get_stylesheet_directory() . '/inf/favicons/generated/favicon.ico'
+            );
 
-                    <div class="notice notice-success">
+            if ($favicon_exists):
+
+                ?>
+
+                <hr>
+
+                <h2>Видалення фавіконок</h2>
+
+                <p>
+                    Видалити всі згенеровані фавіконки та завантажений оригінал?
+                </p>
+
+                <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+                    onsubmit="return confirm('Ви впевнені, що хочете видалити всі фавіконки?');">
+
+                    <input type="hidden" name="action" value="theme_favicon_delete">
+
+                    <?php wp_nonce_field('theme_favicon_delete', 'favicon_delete_nonce'); ?>
+
+                    <?php
+                    submit_button(
+                        'Видалити фавіконки',
+                        'delete',
+                        'submit',
+                        false
+                    );
+                    ?>
+
+                </form>
+
+            <?php endif; ?>
+
+            <?php if (isset($_GET['favicon_status'])): ?>
+
+                <?php if ($_GET['favicon_status'] === 'success'): ?>
+
+                    <div class="notice notice-success is-dismissible">
                         <p>Фавіконки успішно згенеровано!</p>
                     </div>
 
-                <?php else : ?>
+                <?php elseif ($_GET['favicon_status'] === 'deleted'): ?>
 
-                    <div class="notice notice-error">
-                        <p>Під час генерації виникла помилка.</p>
+                    <div class="notice notice-success is-dismissible">
+                        <p>Усі фавіконки успішно видалено!</p>
+                    </div>
+
+                <?php else: ?>
+
+                    <div class="notice notice-error is-dismissible">
+                        <p>Під час виконання операції виникла помилка.</p>
                     </div>
 
                 <?php endif; ?>
@@ -106,7 +146,8 @@ class Theme_Favicon_Admin {
     /**
      * Handle image upload.
      */
-    public function handle_upload() {
+    public function handle_upload()
+    {
 
         if (!current_user_can('manage_options')) {
             wp_die('Недостатньо прав.');
@@ -129,8 +170,8 @@ class Theme_Favicon_Admin {
             $file['name'],
             [
                 'jpg|jpeg' => 'image/jpeg',
-                'png'      => 'image/png',
-                'webp'     => 'image/webp',
+                'png' => 'image/png',
+                'webp' => 'image/webp',
             ]
         );
 
@@ -146,7 +187,7 @@ class Theme_Favicon_Admin {
 
         $extension = [
             'image/jpeg' => 'jpg',
-            'image/png'  => 'png',
+            'image/png' => 'png',
             'image/webp' => 'webp',
         ][$image['type']];
 
@@ -183,9 +224,34 @@ class Theme_Favicon_Admin {
     }
 
     /**
+     * Handle favicon deletion.
+     */
+    public function handle_delete()
+    {
+
+        if (!current_user_can('manage_options')) {
+            wp_die('Недостатньо прав.');
+        }
+
+        check_admin_referer(
+            'theme_favicon_delete',
+            'favicon_delete_nonce'
+        );
+
+        $result = $this->generator->delete();
+
+        if (!$result) {
+            $this->redirect('error');
+        }
+
+        $this->redirect('deleted');
+    }
+
+    /**
      * Redirect after upload.
      */
-    private function redirect($status) {
+    private function redirect($status)
+    {
 
         wp_safe_redirect(
             add_query_arg(

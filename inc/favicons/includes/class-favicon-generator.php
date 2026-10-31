@@ -2,18 +2,21 @@
 
 defined('ABSPATH') || exit;
 
-class Theme_Favicon_Generator {
+class Theme_Favicon_Generator
+{
 
     private string $directory;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->directory = get_stylesheet_directory() . '/inf/favicons/generated/';
     }
 
     /**
      * Generate favicon files.
      */
-    public function generate($source_path) {
+    public function generate($source_path)
+    {
 
         if (!file_exists($source_path)) {
             return new WP_Error('missing_source', 'Файл не знайдено.');
@@ -24,13 +27,13 @@ class Theme_Favicon_Generator {
         }
 
         $sizes = [
-            'favicon-16x16.png'           => 16,
-            'favicon-32x32.png'           => 32,
-            'favicon-48x48.png'           => 48,
-            'apple-touch-icon.png'        => 180,
-            'android-chrome-192x192.png'  => 192,
-            'android-chrome-512x512.png'  => 512,
-            'mstile-150x150.png'          => 150,
+            'favicon-16x16.png' => 16,
+            'favicon-32x32.png' => 32,
+            'favicon-48x48.png' => 48,
+            'apple-touch-icon.png' => 180,
+            'android-chrome-192x192.png' => 192,
+            'android-chrome-512x512.png' => 512,
+            'mstile-150x150.png' => 150,
         ];
 
         foreach ($sizes as $filename => $size) {
@@ -70,7 +73,8 @@ class Theme_Favicon_Generator {
     /**
      * Generate ICO file.
      */
-    private function generate_ico() {
+    private function generate_ico()
+    {
 
         $files = [
             $this->directory . 'favicon-16x16.png',
@@ -92,9 +96,9 @@ class Theme_Favicon_Generator {
             $size = getimagesize($file);
 
             $images[] = [
-                'width'  => $size[0],
+                'width' => $size[0],
                 'height' => $size[1],
-                'data'   => $image,
+                'data' => $image,
                 'offset' => $offset,
             ];
 
@@ -131,7 +135,8 @@ class Theme_Favicon_Generator {
     /**
      * Generate web manifest.
      */
-    private function generate_manifest() {
+    private function generate_manifest()
+    {
 
         $manifest = [
             'name' => get_bloginfo('name'),
@@ -166,7 +171,8 @@ class Theme_Favicon_Generator {
     /**
      * Generate browserconfig.xml.
      */
-    private function generate_browserconfig() {
+    private function generate_browserconfig()
+    {
 
         $xml = '<?xml version="1.0" encoding="utf-8"?>'
             . '<browserconfig>'
@@ -182,6 +188,48 @@ class Theme_Favicon_Generator {
             $this->directory . 'browserconfig.xml',
             $xml
         );
+    }
+
+    /**
+     * Delete all generated favicon files.
+     */
+    public function delete(): bool
+    {
+
+        $files = [
+            'favicon-source.png',
+            'favicon-source.jpg',
+            'favicon-source.webp',
+
+            'favicon.ico',
+
+            'favicon-16x16.png',
+            'favicon-32x32.png',
+            'favicon-48x48.png',
+
+            'apple-touch-icon.png',
+
+            'android-chrome-192x192.png',
+            'android-chrome-512x512.png',
+
+            'mstile-150x150.png',
+
+            'site.webmanifest',
+            'browserconfig.xml',
+        ];
+
+        foreach ($files as $file) {
+
+            $path = $this->directory . $file;
+
+            if (file_exists($path) && !unlink($path)) {
+                return false;
+            }
+        }
+
+        delete_option('theme_favicon_version');
+
+        return true;
     }
 
 }
