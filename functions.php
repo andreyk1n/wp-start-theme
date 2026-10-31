@@ -82,3 +82,7 @@ require_once THEME_INC_PATH . '/helpers/svg.php';
 // enable schema generator
 require_once THEME_INC_PATH . '/seo/schema.php';
 // enable schema generator
+
+// enable favicons generator
+require_once get_template_directory() . '/inc/favicons/favicons.php';
+// enable favicons generator
